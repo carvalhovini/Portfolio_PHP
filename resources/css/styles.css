@@ -1,53 +1,344 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #000; /* Cor de fundo preta */
-    color: #fff; /* Cor do texto branco */
+    box-sizing: border-box;
+    transition: background-color 0.5s, color 0.5s;
+    position: relative;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    header {
+        padding: 10px 0;
+    }
+
+    .profile img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        opacity: 0.8;
+        transition: transform 0.5s, opacity 0.5s;
+    }
+
+    .profile:hover img {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .projects {
+        padding: 20px;
+    }
+
+    .project {
+        flex-direction: column;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .project-media img,
+    .project iframe {
+        border-radius: 8px;
+    }
+
+    .project-info {
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .project-info a {
+        padding: 10px 16px;
+        margin-top: 15px;
+        font-size: 14px;
+    }
+}
+
+
+.dark-theme {
+    background-color: #000;
+    color: #fff;
 }
 
 header {
+    background: linear-gradient(to bottom, #333333, #000000, #000000);
+    color: #fff;
+    text-align: center;
     padding: 20px 0;
-    background-color: #222; /* Cor de fundo azul escuro */
+    transition: background 0.5s, color 0.5s;
 }
 
-header h1 {
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile img {
+    border-radius: 8px;
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: cover;
+    object-position: center center;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.profile:hover img {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+h1 {
     margin: 0;
-    font-size: 36px;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+p {
+    margin: 10px 0;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 20px;
+.social-links {
+    margin-top: 10px;
 }
 
-nav ul li a {
+.social-links a {
+    color: #fff;
     text-decoration: none;
-    color: #fff; /* Cor do link branco */
+    margin: 0 10px;
+    transition: color 0.3s;
 }
 
-#hero {
-    padding: 100px 0;
-    text-align: center;
+.social-links a:hover {
+    color: #55acee;
 }
 
-#hero h2 {
-    margin: 0;
-    font-size: 48px;
+.social-links2 {
+    margin-top: 10px;
 }
 
-footer {
-    padding: 20px 0;
-    background-color: #222; /* Cor de fundo azul escuro */
-    text-align: center;
+.social-links2 a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+    cursor: pointer;
+    padding: 0.5% 1%;
+    background-color: #353535;
+    color: #fff;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 0.5%;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.social-links2 a:hover {
+    background-color: #010101;
+}
+
+
+
+.theme-toggle:hover {
+    background-color: #010101;
+}
+
+
+
+.projects {
+    padding: 5%;
+}
+
+.project {
+    display: flex;
+    padding: 20px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #555;
+}
+
+.project:last-child {
+    border-bottom: none;
+}
+
+.project-info,
+.project-media {
+    flex: 1;
+}
+
+.project-info {
+    padding-right: 20px;
+}
+
+.project-media {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    
+}
+
+.project-media img,
+.project iframe {
+    width: 90%;
+    height: 90%;
+    border-radius: 10px;
+    transition: transform 0.5s;
+}
+
+.project-media:hover img,
+.project:hover iframe {
+    transform: scale(1.1);
+}
+
+.project-info a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #353535;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.project-info a:hover {
+    background-color: #1d1d1d;
+}
+
+.project.reverse {
+    flex-direction: row-reverse;
+}
+
+.about-me {
+    padding: 30px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: justify; /* Align text to justify for a cleaner look */
+}
+
+.about-me h2 {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.about-me p {
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.6; /* Adjusted line height for better readability */
+    margin-bottom: 15px;
+}
+
+.language-icon {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    /* ... (unchanged) ... */
+
+    .about-me {
+        padding: 20px;
+        margin-top: 10px;
+    }
+
+    .about-me h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .about-me p {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+}
+
+
+/* Adicione isso ao seu arquivo styles.css */
+.cv-download {
+    margin-top: 20px;
+}
+
+.cv-download button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cv-download button:hover {
+    background-color: #45a049;
+}
+
+.comment-form {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    margin-bottom: 5px;
+}
+
+.input-group input[type="text"],
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
 }
